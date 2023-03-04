@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  outline-color: var(--color-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --color-primary: #C40000;
+  --color-font: #DDDDDD;
+  --color-background: #121416;
+  
+  --font-primary: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-primary);
+  color-scheme: dark;
+  background-color: var(--color-background);
+  color: var(--color-font);
+}
