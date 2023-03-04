@@ -7,9 +7,7 @@
 
 <div class="grid">
   {#each nodes as node}
-  <div>
     <NodeIcon type={node.type} state={node.state} />
-  </div>
   {/each}
 </div>
 

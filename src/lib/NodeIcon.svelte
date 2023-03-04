@@ -35,4 +35,10 @@
   $: src = srcMap[type][state];
 </script>
 
-<img src={src} alt="{NodeState[state]} {NodeType[type]}" />
+<img {src} alt="{NodeState[state]} {NodeType[type]}" draggable="false" />
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>
