@@ -1,24 +1,40 @@
 <script lang="ts">
+  import { NetworkTables, NetworkTablesTypeInfos } from "ntcore-ts-client";
+  import { derived } from "svelte/store";
+  import { NETWORKTABLES_PATHS, NETWORKTABLES_PORT, NETWORKTABLES_URI } from "./constants";
   import GridDiagram from "./lib/GridDiagram.svelte";
   import Node, { NodeState } from "./lib/Node";
+  import { NTReadableStore } from "./lib/NTStore";
   
-  const placeholderState: Node[] = [];
+  const nt = NetworkTables.getInstanceByURI(NETWORKTABLES_URI, NETWORKTABLES_PORT);
 
-  for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 9; col++) {
-      placeholderState.push(new Node(
-        row,
-        col,
-        NodeState.Unscored
-      ));
+  const selectedNodeXTopic = nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger);
+  const selectedNodeYTopic = nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger);
+
+  const selectedNodeX = NTReadableStore(selectedNodeXTopic);
+  const selectedNodeY = NTReadableStore(selectedNodeYTopic);
+
+  const nodes = derived([selectedNodeX, selectedNodeY], ([$selectedNodeX, $selectedNodeY]) => {
+    const nodes: Node[] = [];
+
+    for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 9; col++) {
+        const selected = (col === $selectedNodeX && row === $selectedNodeY);
+        nodes.push(new Node(
+          row,
+          col,
+          selected ? NodeState.Selected : NodeState.Unscored
+        ));
+      }
     }
-  }
 
-  placeholderState[0].state = NodeState.Selected;
+    return nodes;
+  });
+
 </script>
 
 <main>
-  <GridDiagram nodes={placeholderState} />
+  <GridDiagram nodes={$nodes} />
 </main>
 
 <style>
