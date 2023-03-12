@@ -22,7 +22,7 @@ export const NETWORKTABLES_PATHS = {
   ROW: {
     SELECTED:"/SmartDashboard/Row Selector/selected",
     OPTIONS: "/SmartDashboard/Row Selector/options",
-    CONFIRMATION: "/SmartDashboard/Row Selector/active`",
+    CONFIRMATION: "/SmartDashboard/Row Selector/active",
   },
   SELECTED_NODE_X: "/SmartDashboard/Teleop Target Selector/Column Selected",
   SELECTED_NODE_Y: "/SmartDashboard/Teleop Target Selector/Row Selected",
