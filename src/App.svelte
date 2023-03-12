@@ -12,21 +12,26 @@
 
   const autonRoutine = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.OPTIONS, NetworkTablesTypeInfos.kStringArray)
+    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
 
   const startingColumn = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.OPTIONS, NetworkTablesTypeInfos.kStringArray)
+    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
 
   const crossingSide = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.OPTIONS, NetworkTablesTypeInfos.kStringArray)
+    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
   const row = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.ROW.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray)
+    nt.createTopic(NETWORKTABLES_PATHS.ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+
   );
 
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
