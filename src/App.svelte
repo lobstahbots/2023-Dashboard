@@ -67,26 +67,35 @@
   main {
     display: grid;
     place-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas: 
     "grid-diagram grid-diagram"
     "camera-stream auton-options";
     height: 100%;
     overflow: auto;
-    padding: 0 3em;
+    padding: 1em;
+    gap: 1em;
   }
 
   .grid-diagram {
     grid-area: grid-diagram;
+    width: 80%;
   }
 
   .camera-stream {
     grid-area: camera-stream;
-    width: 100%;
     height: 100%;
+    width: 100%;
     object-fit: contain;
+    overflow: hidden;
+    border-radius: 1em;
   }
 
   .auton-options {
     grid-area: auton-options;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
   }
 </style>
