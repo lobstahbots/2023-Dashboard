@@ -77,13 +77,14 @@
 <style>
   main {
     display: grid;
-    place-items: center;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
     "grid-diagram grid-diagram"
     "camera-stream auton-options";
     height: 100%;
+    width: 80%;
+    margin: auto;
     overflow: auto;
     padding: 1em;
     gap: 1em;
@@ -91,7 +92,6 @@
 
   .grid-diagram {
     grid-area: grid-diagram;
-    width: 80%;
   }
 
   .camera-stream {
@@ -105,6 +105,9 @@
 
   .auton-options {
     grid-area: auton-options;
+    justify-self: right;
+    max-width: 30em;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1em;
