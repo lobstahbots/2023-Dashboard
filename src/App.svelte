@@ -2,13 +2,16 @@
   import { NetworkTables, NetworkTablesTypeInfos } from "ntcore-ts-client";
   import { derived } from "svelte/store";
   import { CAMERA_URI, NETWORKTABLES_PATHS, NETWORKTABLES_PORT, NETWORKTABLES_URI } from "./constants";
-    import { StringChooser } from "./lib/StringChooser";
-    import DropdownChooser from "./lib/DropdownChooser.svelte";
+  import { StringChooser } from "./lib/StringChooser";
+  import DropdownChooser from "./lib/DropdownChooser.svelte";
   import GridDiagram from "./lib/GridDiagram.svelte";
   import Node, { NodeState } from "./lib/Node";
-  import { NTReadableStore, NTWritableStore } from "./lib/NTStore";
+  import { NTConnectionStore, NTReadableStore } from "./lib/NTStore";
+  import WarningStrip from "./lib/WarningStrip.svelte";
   
   const nt = NetworkTables.getInstanceByURI(NETWORKTABLES_URI, NETWORKTABLES_PORT);
+
+  const connected = NTConnectionStore(nt);
 
   const autonRoutine = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.SELECTED, NetworkTablesTypeInfos.kString),
@@ -27,11 +30,11 @@
     nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
     nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
+
   const row = new StringChooser(
     nt.createTopic(NETWORKTABLES_PATHS.ROW.SELECTED, NetworkTablesTypeInfos.kString),
     nt.createTopic(NETWORKTABLES_PATHS.ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
     nt.createTopic(NETWORKTABLES_PATHS.ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-
   );
 
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
@@ -62,6 +65,9 @@
   </div>
   <img src={CAMERA_URI} class="camera-stream" alt="Camera Stream">
   <div class="auton-options">
+    {#if !$connected}
+    <WarningStrip>Robot Disconnected</WarningStrip>
+    {/if}
     {#each [autonRoutine, startingColumn, crossingSide, row] as chooser}
       <DropdownChooser chooser={chooser} />
     {/each}
