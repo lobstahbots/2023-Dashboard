@@ -10,6 +10,7 @@
   --color-warning: #c66d00;
   --color-font: #DDDDDD;
   --color-background: #121416;
+  --color-background-lighter: #222426;
   
   --font-primary: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

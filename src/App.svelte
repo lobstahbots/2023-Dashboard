@@ -102,6 +102,14 @@
     overflow: hidden;
     border-radius: 1em;
   }
+  
+  .camera-stream::before {
+    content: "";
+    display: block;
+    width: 30em;
+    height: 100%;
+    background-color: var(--color-background-lighter);
+  }
 
   .auton-options {
     grid-area: auton-options;
