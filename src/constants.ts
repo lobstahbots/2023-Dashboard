@@ -20,9 +20,9 @@ export const NETWORKTABLES_PATHS = {
     CONFIRMATION: "/SmartDashboard/Crossing Position Chooser/active",
   }, 
   SCORING_ROW: {
-    SELECTED:"/SmartDashboard/Row Selector/selected",
-    OPTIONS: "/SmartDashboard/Row Selector/options",
-    CONFIRMATION: "/SmartDashboard/Row Selector/active",
+    SELECTED:"/SmartDashboard/Scoring Row Chooser/selected",
+    OPTIONS: "/SmartDashboard/Scoring Row Chooser/options",
+    CONFIRMATION: "/SmartDashboard/Scoring Row Chooser/active",
   },
   NUMBER_ELEMENTS: {
     SELECTED:"/SmartDashboard/Number of Elements Chooser/selected",
