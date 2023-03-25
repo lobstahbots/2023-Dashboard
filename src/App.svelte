@@ -79,12 +79,12 @@
   </div>
   <div class="auton-options">
     {#if !$connected}
-    <WarningStrip>Robot Disconnected</WarningStrip>
+      <WarningStrip>Robot Disconnected</WarningStrip>
+    {/if}
     <div class="two-col-options">
       <BooleanColor value={$canPickUp} label="Can pick up" />
       <BooleanColor value={$hasPiece} label="Has game piece" />
     </div>
-    {/if}
     {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
     {/each}
