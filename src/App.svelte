@@ -9,6 +9,7 @@
   import { NTConnectionStore, NTReadableStore } from "./lib/NTStore";
   import WarningStrip from "./lib/WarningStrip.svelte";
     import BooleanColor from "./lib/BooleanColor.svelte";
+    import CameraStream from "./lib/CameraStream.svelte";
   
   const nt = NetworkTables.getInstanceByURI(NETWORKTABLES_URI, NETWORKTABLES_PORT);
 
@@ -73,7 +74,9 @@
   <div class="grid-diagram">
     <GridDiagram nodes={$nodes} />
   </div>
-  <img src={CAMERA_URI} class="camera-stream" alt="Camera Stream">
+  <div class="camera-stream">
+    <CameraStream src={CAMERA_URI} />
+  </div>
   <div class="auton-options">
     {#if !$connected}
     <WarningStrip>Robot Disconnected</WarningStrip>
@@ -110,19 +113,6 @@
 
   .camera-stream {
     grid-area: camera-stream;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    overflow: hidden;
-    border-radius: 1em;
-  }
-  
-  .camera-stream::before {
-    content: "";
-    display: block;
-    width: 30em;
-    height: 100%;
-    background-color: var(--color-background-lighter);
   }
 
   .auton-options {
