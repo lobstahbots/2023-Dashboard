@@ -31,10 +31,16 @@
     nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
 
-  const row = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.ROW.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  const scoringRow = new StringChooser(
+    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.SELECTED, NetworkTablesTypeInfos.kString),
+    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  );
+
+  const numElements = new StringChooser(
+    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.SELECTED, NetworkTablesTypeInfos.kString),
+    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
 
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
@@ -68,7 +74,7 @@
     {#if !$connected}
     <WarningStrip>Robot Disconnected</WarningStrip>
     {/if}
-    {#each [autonRoutine, startingColumn, crossingSide, row] as chooser}
+    {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
     {/each}
   </div>
