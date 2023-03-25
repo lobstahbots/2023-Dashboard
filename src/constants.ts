@@ -30,7 +30,7 @@ export const NETWORKTABLES_PATHS = {
     CONFIRMATION: "/SmartDashboard/Number of Elements Chooser/active",
   },
 
-  CAN_PICKUP: "Can pickup",
+  CAN_PICK_UP: "/SmartDashboard/Can pickup",
 
   SELECTED_NODE_X: "/SmartDashboard/Teleop Target Selector/Column Selected",
   SELECTED_NODE_Y: "/SmartDashboard/Teleop Target Selector/Row Selected",

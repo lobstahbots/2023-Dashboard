@@ -44,10 +44,10 @@
     nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
   );
 
+  const canPickUp = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICK_UP, NetworkTablesTypeInfos.kBoolean));
+
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
   const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
-
-  const canPickup = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICKUP, NetworkTablesTypeInfos.kBoolean));
 
   const nodes = derived([selectedNodeX, selectedNodeY], ([$selectedNodeX, $selectedNodeY]) => {
   const nodes: Node[] = [];
@@ -76,7 +76,7 @@
   <div class="auton-options">
     {#if !$connected}
     <WarningStrip>Robot Disconnected</WarningStrip>
-    <BooleanColor value={$canPickup} label="Can pick up" />
+    <BooleanColor value={$canPickUp} label="Can pick up" />
     {/if}
     {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
