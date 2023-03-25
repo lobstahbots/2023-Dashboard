@@ -8,6 +8,7 @@
   import Node, { NodeState } from "./lib/Node";
   import { NTConnectionStore, NTReadableStore } from "./lib/NTStore";
   import WarningStrip from "./lib/WarningStrip.svelte";
+    import BooleanColor from "./lib/BooleanColor.svelte";
   
   const nt = NetworkTables.getInstanceByURI(NETWORKTABLES_URI, NETWORKTABLES_PORT);
 
@@ -46,6 +47,8 @@
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
   const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
 
+  const canPickup = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICKUP, NetworkTablesTypeInfos.kBoolean));
+
   const nodes = derived([selectedNodeX, selectedNodeY], ([$selectedNodeX, $selectedNodeY]) => {
   const nodes: Node[] = [];
 
@@ -73,6 +76,7 @@
   <div class="auton-options">
     {#if !$connected}
     <WarningStrip>Robot Disconnected</WarningStrip>
+    <BooleanColor value={$canPickup} label="Can pick up" />
     {/if}
     {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
@@ -125,5 +129,6 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    overflow: auto;
   }
 </style>
