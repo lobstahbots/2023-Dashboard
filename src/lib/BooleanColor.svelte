@@ -14,11 +14,12 @@
         border-radius: 1em;
         display: grid;
         place-items: center;
+        line-height: 1em;
 
-        background-color: #FF0000;
+        background-color: var(--color-background-lighter);
     }
 
     .true {
-        background-color: #00FF00;
+        background-color: var(--color-positive);
     }
 </style>
