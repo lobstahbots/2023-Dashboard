@@ -45,6 +45,7 @@
   );
 
   const canPickUp = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICK_UP, NetworkTablesTypeInfos.kBoolean));
+  const hasPiece = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.HAS_PIECE, NetworkTablesTypeInfos.kBoolean));
 
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
   const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
@@ -76,7 +77,10 @@
   <div class="auton-options">
     {#if !$connected}
     <WarningStrip>Robot Disconnected</WarningStrip>
-    <BooleanColor value={$canPickUp} label="Can pick up" />
+    <div class="two-col-options">
+      <BooleanColor value={$canPickUp} label="Can pick up" />
+      <BooleanColor value={$hasPiece} label="Has game piece" />
+    </div>
     {/if}
     {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
@@ -130,5 +134,11 @@
     flex-direction: column;
     gap: 1em;
     overflow: auto;
+  }
+
+  .two-col-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
   }
 </style>
