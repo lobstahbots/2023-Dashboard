@@ -148,6 +148,7 @@
 
   .camera-stream {
     grid-area: camera-stream;
+    min-height: 0;
   }
 
   .auton-options {

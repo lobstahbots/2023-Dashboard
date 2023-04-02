@@ -30,10 +30,12 @@
     display: block;
     height: 100%;
     width: 100%;
+    aspect-ratio: auto 4 / 3;
     object-fit: contain;
     object-position: top;
     overflow: hidden;
     border-radius: 1em;
+    background-color: var(--color-background-lighter);
   }
 
   img::before {
@@ -41,6 +43,6 @@
     display: block;
     width: 30em;
     height: 100%;
-    background-color: var(--color-background-lighter);
+    background-color: inherit;
   }
 </style>
