@@ -2,6 +2,7 @@ export const NETWORKTABLES_URI = "10.2.46.2";
 export const NETWORKTABLES_PORT = undefined;
 
 export const CAMERA_URI = "http://10.2.46.14:1181/?action=stream"
+export const CAMERA_RECONNECT_INTERVAL = null;
 
 export const NETWORKTABLES_PATHS = {
   AUTON_ROUTINE: {

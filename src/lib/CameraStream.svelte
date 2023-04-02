@@ -1,8 +1,29 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
+  import { CAMERA_RECONNECT_INTERVAL } from "../constants";
+
   export let src: string;
+
+  let img;
+  let reconnectTimeout = null;
+
+  const onError = () => {
+    if (!CAMERA_RECONNECT_INTERVAL) return;
+
+    clearTimeout(reconnectTimeout);
+    reconnectTimeout = setTimeout(() => {
+      img.src = src;
+    }, CAMERA_RECONNECT_INTERVAL);
+  }
+
+  onDestroy(() => clearTimeout(reconnectTimeout));
 </script>
 
-<img src={src} alt="Camera Stream" />
+<img
+  src={src}
+  alt="Camera Stream"
+  on:error={onError} bind:this={img}
+/>
 
 <style>
   img {
