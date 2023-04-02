@@ -47,6 +47,7 @@
 
   const canPickUp = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICK_UP, NetworkTablesTypeInfos.kBoolean));
   const hasPiece = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.HAS_PIECE, NetworkTablesTypeInfos.kBoolean));
+  const gyroIntialized = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.GYRO_INITIALIZED, NetworkTablesTypeInfos.kBoolean));
 
   const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
   const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
@@ -88,6 +89,8 @@
   <div class="auton-options">
     {#if !$connected}
       <WarningStrip>Robot Disconnected</WarningStrip>
+    {:else if !$gyroIntialized}
+      <WarningStrip>Gyro Not Initialized</WarningStrip>
     {/if}
     <div class="two-col-options">
       <BooleanColor value={$canPickUp} label="Can pick up" />

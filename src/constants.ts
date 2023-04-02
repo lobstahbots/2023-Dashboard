@@ -32,6 +32,7 @@ export const NETWORKTABLES_PATHS = {
 
   CAN_PICK_UP: "/SmartDashboard/Can pickup",
   HAS_PIECE: "/SmartDashboard/Has Game Piece",
+  GYRO_INITIALIZED: "/SmartDashboard/Gyro Initialized",
 
   SELECTED_NODE_X: "/SmartDashboard/Teleop Target Selector/Column Selected",
   SELECTED_NODE_Y: "/SmartDashboard/Teleop Target Selector/Row Selected",
