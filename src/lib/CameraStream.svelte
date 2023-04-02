@@ -10,6 +10,7 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
+    object-position: top;
     overflow: hidden;
     border-radius: 1em;
   }

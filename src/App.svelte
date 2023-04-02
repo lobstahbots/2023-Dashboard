@@ -153,6 +153,7 @@
   .auton-options {
     grid-area: auton-options;
     justify-self: right;
+    min-width: 10em;
     max-width: 30em;
     width: 100%;
     display: flex;
