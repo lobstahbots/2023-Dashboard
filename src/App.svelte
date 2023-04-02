@@ -71,6 +71,14 @@
 </script>
 
 <main>
+  <div class="status-area status-area-left">
+    {#if $canPickUp}<div style="background-color: #34a8eb; max-width: 3em;" />{/if}
+    {#if $hasPiece}<div style="background-color: #3bdb25;" />{/if}
+  </div>
+  <div class="status-area status-area-right">
+    {#if $canPickUp}<div style="background-color: #34a8eb; max-width: 3em;" />{/if}
+    {#if $hasPiece}<div style="background-color: #3bdb25;" />{/if}
+  </div>
   <div class="grid-diagram">
     <GridDiagram nodes={$nodes} />
   </div>
@@ -94,17 +102,41 @@
 <style>
   main {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 10% auto 1fr 10%;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-    "grid-diagram grid-diagram"
-    "camera-stream auton-options";
+    "status-area-left grid-diagram grid-diagram status-area-right"
+    "status-area-left camera-stream auton-options status-area-right";
     height: 100%;
-    width: 80%;
     margin: auto;
     overflow: auto;
     padding: 1em;
     gap: 1em;
+  }
+
+  .status-area {
+    display: flex;
+    border-radius: 1em;
+    overflow: hidden;
+    gap: 2px;
+    max-width: 100%;
+  }
+
+  .status-area > * {
+    overflow: hidden;
+    width: 100vw;
+    flex: 1;
+  }
+
+  .status-area-left {
+    grid-area: status-area-left;
+    justify-self: left;
+  }
+
+  .status-area-right {
+    grid-area: status-area-right;
+    flex-direction: row-reverse;
+    justify-self: right;
   }
 
   .grid-diagram {
