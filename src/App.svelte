@@ -15,59 +15,59 @@
 
   const connected = NTConnectionStore(nt);
 
-  const autonRoutine = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-  );
+  // const autonRoutine = new StringChooser(
+  //   nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.SELECTED, NetworkTablesTypeInfos.kString),
+  //   nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+  //   nt.createTopic(NETWORKTABLES_PATHS.AUTON_ROUTINE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  // );
 
-  const startingColumn = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-  );
+  // const startingColumn = new StringChooser(
+  //   nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.SELECTED, NetworkTablesTypeInfos.kString),
+  //   nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+  //   nt.createTopic(NETWORKTABLES_PATHS.STARTING_COLUMN.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  // );
 
-  const crossingSide = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-  );
+  // const crossingSide = new StringChooser(
+  //   nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.SELECTED, NetworkTablesTypeInfos.kString),
+  //   nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+  //   nt.createTopic(NETWORKTABLES_PATHS.CROSSING_SIDE.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  // );
 
-  const scoringRow = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-  );
+  // const scoringRow = new StringChooser(
+  //   nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.SELECTED, NetworkTablesTypeInfos.kString),
+  //   nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+  //   nt.createTopic(NETWORKTABLES_PATHS.SCORING_ROW.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  // );
 
-  const numElements = new StringChooser(
-    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.SELECTED, NetworkTablesTypeInfos.kString),
-    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.OPTIONS, NetworkTablesTypeInfos.kStringArray),
-    nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
-  );
+  // const numElements = new StringChooser(
+  //   nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.SELECTED, NetworkTablesTypeInfos.kString),
+  //   nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.OPTIONS, NetworkTablesTypeInfos.kStringArray),
+  //   nt.createTopic(NETWORKTABLES_PATHS.NUMBER_ELEMENTS.CONFIRMATION, NetworkTablesTypeInfos.kStringArray),
+  // );
 
   const canPickUp = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.CAN_PICK_UP, NetworkTablesTypeInfos.kBoolean));
   const hasPiece = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.HAS_PIECE, NetworkTablesTypeInfos.kBoolean));
   const gyroIntialized = NTReadableStore(nt.createTopic<boolean>(NETWORKTABLES_PATHS.GYRO_INITIALIZED, NetworkTablesTypeInfos.kBoolean));
 
-  const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
-  const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
+  // const selectedNodeX = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_X, NetworkTablesTypeInfos.kInteger));
+  // const selectedNodeY = NTReadableStore(nt.createTopic<number>(NETWORKTABLES_PATHS.SELECTED_NODE_Y, NetworkTablesTypeInfos.kInteger));
 
-  const nodes = derived([selectedNodeX, selectedNodeY], ([$selectedNodeX, $selectedNodeY]) => {
-  const nodes: Node[] = [];
+  // const nodes = derived([selectedNodeX, selectedNodeY], ([$selectedNodeX, $selectedNodeY]) => {
+  // const nodes: Node[] = [];
 
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 9; col++) {
-        const selected = (col === $selectedNodeX && row === $selectedNodeY);
-        nodes.push(new Node(
-          row,
-          col,
-          selected ? NodeState.Selected : NodeState.Unscored
-        ));
-      }
-    }
+  //   for (let row = 0; row < 3; row++) {
+  //     for (let col = 0; col < 9; col++) {
+  //       const selected = (col === $selectedNodeX && row === $selectedNodeY);
+  //       nodes.push(new Node(
+  //         row,
+  //         col,
+  //         selected ? NodeState.Selected : NodeState.Unscored
+  //       ));
+  //     }
+  //   }
 
-    return nodes;
-  });
+  //   return nodes;
+  // });
 
 </script>
 
@@ -80,13 +80,13 @@
     {#if $canPickUp}<div style="background-color: #34a8eb; max-width: 3em;" />{/if}
     {#if $hasPiece}<div style="background-color: #3bdb25;" />{/if}
   </div>
-  <div class="grid-diagram">
+  <!-- <div class="grid-diagram">
     <GridDiagram nodes={$nodes} />
-  </div>
+  </div> -->
   <div class="camera-stream">
     <CameraStream src={CAMERA_URI} />
   </div>
-  <div class="auton-options">
+  <!-- <div class="auton-options">
     {#if !$connected}
       <WarningStrip>Robot Disconnected</WarningStrip>
     {:else if !$gyroIntialized}
@@ -99,17 +99,16 @@
     {#each [autonRoutine, startingColumn, crossingSide, scoringRow, numElements] as chooser}
       <DropdownChooser chooser={chooser} />
     {/each}
-  </div>
+  </div> -->
 </main>
 
 <style>
   main {
     display: grid;
-    grid-template-columns: 10% auto 1fr 10%;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 1fr;
     grid-template-areas: 
-    "status-area-left grid-diagram grid-diagram status-area-right"
-    "status-area-left camera-stream auton-options status-area-right";
+    "status-area-left camera-stream status-area-right";
     height: 100%;
     margin: auto;
     overflow: auto;
